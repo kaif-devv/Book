@@ -1,0 +1,33 @@
+# Ignore build outputs
+/bin
+/obj
+
+# User-specific files
+/*.user
+/*.rsuser
+/*.suo
+/*.userosscache
+/*.sln.docstates
+
+# Logs
+/*.log
+
+# Visual Studio Code
+/.vscode/
+
+# Rider
+/.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Entity Framework
+Migrations/
+
+# DotNet specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Environment variables
+/.env

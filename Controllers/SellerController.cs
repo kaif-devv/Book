@@ -15,6 +15,7 @@ namespace Books.Controllers
             _sellerService = sellerService;
         }
 
+        // Get all sellers
         [HttpGet]
         [Route("GetSellers")]
         public List<Seller> GetSellers()
@@ -22,6 +23,7 @@ namespace Books.Controllers
             return _sellerService.GetAllSellers();
         }
 
+        // Get seller by ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Seller>> GetSeller(int id)
         {
@@ -33,6 +35,7 @@ namespace Books.Controllers
             return seller;
         }
 
+        // Update the seller by ID
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSeller(int id, SellerUpdateDto seller)
         {
@@ -43,9 +46,10 @@ namespace Books.Controllers
             if (!result)
                 return NotFound($"Seller with ID {id} not found");
 
-            return NoContent();
+            return Ok("Seller Updated Successfully");
         }
 
+        // Add a new seller
         [HttpPost]
         [Route("AddSeller")]
         public ActionResult<string> PostSeller(Seller seller)
@@ -53,6 +57,7 @@ namespace Books.Controllers
             return _sellerService.AddSeller(seller);
         }
 
+        // Delete seller by ID
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSeller(int id)
         {
@@ -60,7 +65,7 @@ namespace Books.Controllers
             if (!result)
                 return NotFound($"Seller with ID {id} not found");
 
-            return NoContent();
+            return Ok("Seller Deleted Successfully");
         }
     }
 }

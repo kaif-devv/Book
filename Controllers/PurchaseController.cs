@@ -15,6 +15,7 @@ namespace Books.Controllers
             _purchaseService = purchaseService;
         }
 
+        // Get all purchases
         [HttpGet]
         [Route("GetPurchases")]
         public List<Purchase> GetPurchases()
@@ -22,6 +23,7 @@ namespace Books.Controllers
             return _purchaseService.GetAllPurchases();
         }
 
+        // Get purchase by ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Purchase>> GetPurchase(int id)
         {
@@ -33,6 +35,7 @@ namespace Books.Controllers
             return purchase;
         }
 
+        // Update the purchase by ID
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPurchase(int id, PurchaseUpdateDto purchase)
         {
@@ -43,9 +46,10 @@ namespace Books.Controllers
             if (!result)
                 return NotFound($"Purchase with ID {id} not found");
 
-            return NoContent();
+            return Ok("Purchase Updated Successfully");
         }
 
+        // Add a new purchase
         [HttpPost]
         [Route("AddPurchase")]
         public ActionResult<string> PostPurchase(Purchase purchase)
@@ -53,6 +57,7 @@ namespace Books.Controllers
             return _purchaseService.AddPurchase(purchase);
         }
 
+        // Delete purchase by ID
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePurchase(int id)
         {
@@ -60,7 +65,7 @@ namespace Books.Controllers
             if (!result)
                 return NotFound($"Purchase with ID {id} not found");
 
-            return NoContent();
+            return Ok("Purchase Deleted Successfully");
         }
     }
 }

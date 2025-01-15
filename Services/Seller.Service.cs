@@ -54,6 +54,8 @@ namespace Books.Services
         {
             _context.Sellers.Add(seller);
             _context.SaveChanges();
+            if (seller.Id == 0)
+                return "Failed to add seller";
             return "Seller Added Successfully";
         }
 

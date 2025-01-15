@@ -14,6 +14,7 @@ namespace Books.Controllers
             _booksService = booksService;
         }
 
+// Get all books
         [HttpGet]
         [Route("GetBooks")]
         public List<BookModel.Books> GetBooks()
@@ -21,6 +22,7 @@ namespace Books.Controllers
             return _booksService.GetAllBooks();
         }
 
+// Get book by ID
         [HttpGet("{id}")]
         public async Task<ActionResult<BookModel.Books>> GetBooks(int id)
         {
@@ -32,6 +34,7 @@ namespace Books.Controllers
             return Ok(book);
         }
 
+// Update the book by ID
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBooks(int id, BookModel.BookUpdateDto bookUpdate)
         {
@@ -49,6 +52,7 @@ namespace Books.Controllers
             return Ok(book.book);
         }
 
+// Add a new book
         [HttpPost]
         [Route("AddBooks")]
         public string PostBooks(BookModel.Books books)

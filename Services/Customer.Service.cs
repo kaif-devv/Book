@@ -57,6 +57,8 @@ namespace Books.Services
         {
             _context.Customers.Add(customer);
             _context.SaveChanges();
+            if (customer.Id == 0)
+                return "Failed to add customer";
             return "Customer Added Successfully";
         }
 

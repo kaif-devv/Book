@@ -15,6 +15,7 @@ namespace Books.Controllers
             _customerService = customerService;
         }
 
+        // Get all customers
         [HttpGet]
         [Route("GetCustomers")]
         public List<Customer> GetCustomers()
@@ -22,6 +23,7 @@ namespace Books.Controllers
             return _customerService.GetAllCustomers();
         }
 
+        // Get customer by ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
@@ -33,6 +35,7 @@ namespace Books.Controllers
             return customer;
         }
 
+        // Update the customer by ID
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCustomer(int id, CustomerUpdateDto customer)
         {
@@ -43,9 +46,10 @@ namespace Books.Controllers
             if (!result)
                 return NotFound($"Customer with ID {id} not found");
 
-            return NoContent();
+            return Ok("Customer Updated Successfully");
         }
 
+        // Add a new customer
         [HttpPost]
         [Route("AddCustomer")]
         public ActionResult<string> PostCustomer(Customer customer)
@@ -60,7 +64,7 @@ namespace Books.Controllers
             if (!result)
                 return NotFound($"Customer with ID {id} not found");
 
-            return NoContent();
+            return Ok("Customer Deleted Successfully");
         }
     }
 }

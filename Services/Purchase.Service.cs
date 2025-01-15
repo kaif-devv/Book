@@ -21,16 +21,18 @@ namespace Books.Services
             _context = context;
         }
 
+// Get all purchases
         public List<Purchase> GetAllPurchases()
         {
             return _context.Purchases.Include(p => p.Book).Include(p => p.Customer).ToList();
         }
 
+// Get purchase by ID
         public async Task<Purchase> GetPurchaseById(int id)
         {
             return await _context.Purchases.Include(p => p.Book).Include(p => p.Customer).FirstOrDefaultAsync(p => p.Id == id);
         }
-
+// Update the purchase by ID
         public async Task<bool> UpdatePurchase(int id, PurchaseUpdateDto purchase)
         {
             var existingPurchase = await _context.Purchases.FindAsync(id);
@@ -51,13 +53,18 @@ namespace Books.Services
             }
         }
 
+        // Add a new purchase
+
         public string AddPurchase(Purchase purchase)
         {
             _context.Purchases.Add(purchase);
             _context.SaveChanges();
+            if (purchase.Id == 0)
+                return "Failed to add purchase";
             return "Purchase Added Successfully";
         }
 
+// Delete purchase by ID
         public async Task<bool> DeletePurchase(int id)
         {
             var purchase = await _context.Purchases.FindAsync(id);

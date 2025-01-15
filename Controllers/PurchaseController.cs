@@ -8,9 +8,9 @@ namespace Books.Controllers
     [ApiController]
     public class PurchasesController : ControllerBase
     {
-        private readonly IPurchaseService _purchaseService;
+        private readonly PurchaseService _purchaseService;
 
-        public PurchasesController(IPurchaseService purchaseService)
+        public PurchasesController(PurchaseService purchaseService)
         {
             _purchaseService = purchaseService;
         }

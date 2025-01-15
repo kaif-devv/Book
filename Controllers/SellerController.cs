@@ -8,9 +8,9 @@ namespace Books.Controllers
     [ApiController]
     public class SellersController : ControllerBase
     {
-        private readonly ISellerService _sellerService;
+        private readonly SellerService _sellerService;
 
-        public SellersController(ISellerService sellerService)
+        public SellersController(SellerService sellerService)
         {
             _sellerService = sellerService;
         }

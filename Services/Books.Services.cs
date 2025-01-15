@@ -15,11 +15,11 @@ namespace Books.Services
         bool BookExists(int id);
     }
 
-    public class BooksServices : IBooksService
+    public class BooksService : IBooksService
     {
         private readonly BooksContext _booksContext;
 
-        public BooksServices(BooksContext context)
+        public BooksService(BooksContext context)
         {
             _booksContext = context;
         }

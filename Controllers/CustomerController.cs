@@ -8,9 +8,9 @@ namespace Books.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private readonly ICustomerService _customerService;
+        private readonly CustomerService _customerService;
 
-        public CustomersController(ICustomerService customerService)
+        public CustomersController(CustomerService customerService)
         {
             _customerService = customerService;
         }

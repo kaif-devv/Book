@@ -49,7 +49,7 @@ namespace Books.Controllers
                 return NotFound("Book not found");
             }
 
-            return Ok(book.book);
+            return Ok("Book Updated Successfully");
         }
 
 // Add a new book
